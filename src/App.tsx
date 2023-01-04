@@ -4,6 +4,7 @@ import Auth from "./components/Auth";
 import Home from "./components/Home";
 import type { User } from "@supabase/supabase-js";
 import React from "react";
+import "./css/styles.css";
 
 function App() {
 	const [user, setUser] = useState<User | null>(null);

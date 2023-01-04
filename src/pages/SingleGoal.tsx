@@ -1,6 +1,5 @@
-import { User } from "@supabase/supabase-js";
 import React from "react";
 
-export default function SingleGoal({ user }: { user: User }) {
+export default function SingleGoal({ userId }: { userId: string }) {
 	return <div>This is page of One goal</div>;
 }

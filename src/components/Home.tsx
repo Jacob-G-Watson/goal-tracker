@@ -65,8 +65,8 @@ const Home = ({ user }: { user: User }) => {
 			</header>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Goals user={user} />} />
-					<Route path="/goal/:id" element={<SingleGoal user={user} />} />
+					<Route path="/" element={<Goals userId={user.id} />} />
+					<Route path="/goal/:id" element={<SingleGoal userId={user.id} />} />
 					<Route path="/todos" element={<Todos user={user} />} />
 				</Routes>
 			</BrowserRouter>
