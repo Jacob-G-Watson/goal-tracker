@@ -1,18 +1,12 @@
 import type { User } from "@supabase/supabase-js";
 import React from "react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../lib/api";
 import RecoverPassword from "./RecoverPassword";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Goals from "../pages/Goals";
 import SingleGoal from "../pages/SingleGoal";
 import Todos from "../pages/Todos";
-
-export interface ITodo {
-	is_complete: boolean;
-	id: number;
-	task: string;
-}
 
 const Home = ({ user }: { user: User }) => {
 	const [recoveryToken, setRecoveryToken] = useState<string | null>(null);

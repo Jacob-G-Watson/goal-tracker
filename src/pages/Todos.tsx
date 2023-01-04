@@ -15,14 +15,6 @@ export default function ToDos({ user }: { user: User }) {
 	const newTaskTextRef = useRef<HTMLInputElement>(null);
 	const [errorText, setError] = useState<string | null>("");
 
-	interface IResults {
-		access_token: string;
-		refresh_token: string;
-		expires_in: string;
-		token_type: string;
-		type: string;
-	}
-
 	useEffect(() => {
 		fetchTodos().catch(console.error);
 	}, []);
