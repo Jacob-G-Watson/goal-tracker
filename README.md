@@ -85,3 +85,9 @@ create policy "Individuals can delete their own todos." on todos for
 -   [Supabase](https://supabase.com)
 
 Supabase is open source, we'd love for you to follow along and get involved at https://github.com/supabase/supabase
+
+# Get Started DEV
+
+Clone the git repo
+npm install
+npm start

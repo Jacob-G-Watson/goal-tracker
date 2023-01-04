@@ -53,16 +53,9 @@ const Home = ({ user }: { user: User }) => {
 	}, []);
 
 	const fetchTodos = async () => {
-		let response = await supabase.from("todos").select("*").order("id", { ascending: false });
-		let todos: ITodo[];
-		let error;
-		if (response.data !== null) {
-			todos = response.data[0];
-			error = response.data[1];
-		} else return;
-
-		if (error) console.log("error", error);
-		else setTodos(todos);
+		let { data: todos, error } = await supabase.from("todos").select("*").order("id", { ascending: false });
+		if (error) console.log("error fetch", error);
+		else setTodos(todos as ITodo[]);
 	};
 
 	const deleteTodo = async (id: number) => {
@@ -70,7 +63,7 @@ const Home = ({ user }: { user: User }) => {
 			await supabase.from("todos").delete().eq("id", id);
 			setTodos(todos.filter((x) => x.id !== id));
 		} catch (error) {
-			console.log("error", error);
+			console.log("error delete", error);
 		}
 	};
 
