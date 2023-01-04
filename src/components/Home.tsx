@@ -3,8 +3,10 @@ import React from "react";
 import { useEffect, useState, useRef } from "react";
 import { supabase } from "../lib/api";
 import RecoverPassword from "./RecoverPassword";
-import TodoItem from "./TodoItem";
-import ToDoList from "./TodoList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Goals from "../pages/Goals";
+import SingleGoal from "../pages/SingleGoal";
+import Todos from "../pages/Todos";
 
 export interface ITodo {
 	is_complete: boolean;
@@ -67,7 +69,15 @@ const Home = ({ user }: { user: User }) => {
 					Logout
 				</button>
 			</header>
-			<ToDoList user={user}></ToDoList>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Goals user={user} />} />
+					<Route path="/goal/:id" element={<SingleGoal user={user} />} />
+					<Route path="/todos" element={<Todos user={user} />} />
+				</Routes>
+			</BrowserRouter>
+
+			{/* <GoalsPage user={user}></GoalsPage> */}
 		</div>
 	);
 };

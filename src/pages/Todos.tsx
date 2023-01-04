@@ -2,7 +2,7 @@ import type { User } from "@supabase/supabase-js";
 import React from "react";
 import { useEffect, useState, useRef } from "react";
 import { supabase } from "../lib/api";
-import TodoItem from "./TodoItem";
+import TodoItem from "../components/TodoItem";
 
 export interface ITodo {
 	is_complete: boolean;
@@ -10,7 +10,7 @@ export interface ITodo {
 	task: string;
 }
 
-const ToDoList = ({ user }: { user: User }) => {
+export default function ToDos({ user }: { user: User }) {
 	const [todos, setTodos] = useState<ITodo[]>([]);
 	const newTaskTextRef = useRef<HTMLInputElement>(null);
 	const [errorText, setError] = useState<string | null>("");
@@ -24,25 +24,6 @@ const ToDoList = ({ user }: { user: User }) => {
 	}
 
 	useEffect(() => {
-		/* Recovery url is of the form
-		 * <SITE_URL>#access_token=x&refresh_token=y&expires_in=z&token_type=bearer&type=recovery
-		 * Read more on https://supabase.com/docs/reference/javascript/reset-password-email#notes
-		 */
-		let url = window.location.hash;
-		let query = url.slice(1);
-		let result: IResults = {
-			access_token: "",
-			refresh_token: "",
-			expires_in: "",
-			token_type: "",
-			type: "",
-		};
-
-		query.split("&").forEach((part) => {
-			const item = part.split("=");
-			result[item[0] as keyof IResults] = decodeURIComponent(item[1]);
-		});
-
 		fetchTodos().catch(console.error);
 	}, []);
 
@@ -119,6 +100,4 @@ const ToDoList = ({ user }: { user: User }) => {
 			</div>
 		</div>
 	);
-};
-
-export default ToDoList;
+}

@@ -21,9 +21,9 @@
 
 Sign up to Supabase - [https://app.supabase.com](https://app.supabase.com) and create a new project. Wait for your database to start.
 
-### 2. Run "Todo List" Quickstart
+### 2. Run "Todo List" Quick start
 
-Once your database has started, run the "Todo List" quickstart. Inside of your project, enter the `SQL editor` tab and scroll down until you see `TODO LIST: Build a basic todo list with Row Level Security`
+Once your database has started, run the "Todo List" quick start. Inside of your project, enter the `SQL editor` tab and scroll down until you see `TODO LIST: Build a basic todo list with Row Level Security`
 
 ### 3. Get the URL and Key
 
