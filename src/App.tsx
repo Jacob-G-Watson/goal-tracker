@@ -6,29 +6,27 @@ import type { User } from "@supabase/supabase-js";
 import React from "react";
 
 function App() {
-    const [user, setUser] = useState<User | null>(null);
+	const [user, setUser] = useState<User | null>(null);
 
-    useEffect(() => {
-        const session = supabase.auth.session();
-        setUser(session?.user ?? null);
+	useEffect(() => {
+		const session = supabase.auth.session();
+		setUser(session?.user ?? null);
 
-        const { data: authListener } = supabase.auth.onAuthStateChange(
-            async (event, session) => {
-                const currentUser = session?.user;
-                setUser(currentUser ?? null);
-            }
-        );
+		const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
+			const currentUser = session?.user;
+			setUser(currentUser ?? null);
+		});
 
-        return () => {
-            authListener?.unsubscribe();
-        };
-    }, [user]);
+		return () => {
+			authListener?.unsubscribe();
+		};
+	}, [user]);
 
-    return (
-        <div className="min-w-full min-h-screen flex items-center justify-center bg-gray-200">
-            {!user ? <Auth /> : <Home user={user} />}
-        </div>
-    );
+	return (
+		<div className="min-w-full min-h-screen flex items-center justify-center bg-gray-200">
+			{!user ? <Auth /> : <Home user={user} />}
+		</div>
+	);
 }
 
 export default App;
