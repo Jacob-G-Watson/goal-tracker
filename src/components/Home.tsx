@@ -51,9 +51,9 @@ const Home = ({ user }: { user: User }) => {
 	return recoveryToken ? (
 		<RecoverPassword token={recoveryToken} setRecoveryToken={setRecoveryToken} />
 	) : (
-		<div className={"w-screen fixed flex flex-col min-h-screen bg-gray-50"}>
-			<header className={"flex justify-between items-center px-4 h-16 bg-gray-900"}>
-				<span className={"text-2xl sm:text-4xl text-white border-b font-sans"}>Header</span>
+		<div className="mainContainer">
+			<header className="">
+				<h1>Goal Tracking</h1>
 				<button
 					onClick={handleLogout}
 					className={

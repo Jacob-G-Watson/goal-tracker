@@ -23,11 +23,7 @@ function App() {
 		};
 	}, [user]);
 
-	return (
-		<div className="min-w-full min-h-screen flex items-center justify-center bg-gray-200">
-			{!user ? <Auth /> : <Home user={user} />}
-		</div>
-	);
+	return <div className="">{!user ? <Auth /> : <Home user={user} />}</div>;
 }
 
 export default App;

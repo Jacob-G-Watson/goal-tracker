@@ -18,7 +18,7 @@ export default function Goals({ userId }: { userId: string }): ReactElement {
 				<div>
 					<div className="pie animate">
 						{" "}
-						{`${(goal.daysOfGoal.filter((day) => day == true).length / goal.daysOfGoal.length) * 100}%`}
+						{`${(goal.daysOfGoal.filter((day) => day === true).length / goal.daysOfGoal.length) * 100}%`}
 					</div>
 				</div>
 			</div>
@@ -53,6 +53,20 @@ export default function Goals({ userId }: { userId: string }): ReactElement {
 		{
 			id: 2,
 			title: "Goal Number 2",
+			startDate: new Date("2023-01-04"),
+			endDate: new Date("2023-01-09"),
+			daysOfGoal: [true, true, true, true, false],
+		},
+		{
+			id: 3,
+			title: "Goal Number 3",
+			startDate: new Date("2023-01-04"),
+			endDate: new Date("2023-01-09"),
+			daysOfGoal: [true, true, true, true, false],
+		},
+		{
+			id: 4,
+			title: "This is a really long goal name",
 			startDate: new Date("2023-01-04"),
 			endDate: new Date("2023-01-09"),
 			daysOfGoal: [true, true, true, true, false],

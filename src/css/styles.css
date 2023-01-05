@@ -1,39 +1,99 @@
+/* Setting colours for light and dark modes */
+/* Style colours and themes taken from UQ COMP2140 Matt Luscombe */
+:root {
+	--purpleColorLighter: #a42de8;
+	--purpleColorPale: #e1aeff;
+	--blueColorLighter: #318aff;
+	--blueColorDarker: #2d3de8;
+
+	--bgColor: #ffffff;
+	--fgColor: #800080;
+	--fgColorLighter: rgba(128, 0, 128, 0.5);
+	--headerTextColor: var(--fgColor);
+	--headerBackgroundColor: var(--purpleColorPale);
+	--textOnTheme: #000;
+	--textOffTheme: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bgColor: #422142;
+		--fgColor: #f0c4f0;
+		--fgColorLighter: rgba(210, 169, 210, 0.5);
+		--headerBackgroundColor: var(--purpleColorLighter);
+		--headerTextColor: var(--fgColor);
+		--textOnTheme: #ffffff;
+		--textOffTheme: #000;
+	}
+}
+
+/* General Settings */
+body {
+	background-color: var(--bgColor);
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: var(--headerBackgroundColor);
+	padding: 1rem;
+}
+
+header h1 {
+	color: var(--headerTextColor);
+	font-size: 2rem;
+}
+
 /* Goal Page */
+div div {
+	border-radius: 1rem;
+}
 .goals {
+	margin: 2rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: lightgray;
+	background-color: var(--fgColor);
 }
 .listOfGoals {
 	display: flex;
-	background-color: gray;
 	align-content: space-between;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
-	width: 80%;
 }
 
 .goalCard {
 	display: flex;
-	justify-content: space-between;
+	flex-wrap: wrap;
+	justify-content: center;
 	align-items: center;
 	padding: 1rem;
-	background-color: aquamarine;
+	background-color: var(--bgColor);
 	margin: 1rem;
 	width: 90%;
 	overflow: hidden;
 }
 
+@media screen and (min-width: 800px) {
+	.goalCard {
+		justify-content: space-evenly;
+	}
+}
+
 .goalCard h1 {
-	font-size: 2.2em;
+	font-size: 2rem;
+	margin: 1rem;
+	text-align: center;
+	color: var(--textOnTheme);
 }
 
 .addNewGoal {
 	margin: 1rem;
 	padding: 1rem;
-	background-color: red;
+	background-color: gray;
+	width: 72%;
 }
 
 /* Pie code from https://www.freecodecamp.org/news/css-only-pie-chart/ */
@@ -45,7 +105,7 @@
 .pie {
 	--p: 90;
 	--b: 22px;
-	--c: lightblue;
+	--c: var(--blueColorLighter);
 	--w: 150px;
 
 	width: var(--w);
@@ -57,6 +117,7 @@
 	font-size: 25px;
 	font-weight: bold;
 	font-family: sans-serif;
+	color: var(--textOnTheme);
 }
 .pie:before,
 .pie:after {
@@ -89,8 +150,4 @@
 	from {
 		--p: 0;
 	}
-}
-
-body {
-	background: #ddd;
 }
