@@ -15,7 +15,12 @@ export default function Goals({ userId }: { userId: string }): ReactElement {
 			<div className="goalCard">
 				<h1>{goal.title}</h1>
 
-				<div className="pie animate"> 90%</div>
+				<div>
+					<div className="pie animate">
+						{" "}
+						{`${(goal.daysOfGoal.filter((day) => day == true).length / goal.daysOfGoal.length) * 100}%`}
+					</div>
+				</div>
 			</div>
 		);
 	}
@@ -50,7 +55,7 @@ export default function Goals({ userId }: { userId: string }): ReactElement {
 			title: "Goal Number 2",
 			startDate: new Date("2023-01-04"),
 			endDate: new Date("2023-01-09"),
-			daysOfGoal: [true, false, true, false, false],
+			daysOfGoal: [true, true, true, true, false],
 		},
 	];
 
@@ -61,7 +66,7 @@ export default function Goals({ userId }: { userId: string }): ReactElement {
 					<GoalCard key={goal.id} {...goal} />
 				))}
 			</div>
-			<div>Add a new goal</div>
+			<div className="addNewGoal">Add a new goal</div>
 		</div>
 	);
 }
