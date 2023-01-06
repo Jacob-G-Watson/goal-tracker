@@ -11,14 +11,16 @@ import type { ReactElement } from "react";
  */
 export default function Goals({ userId }: { userId: string }): ReactElement {
 	function GoalCard(goal: IGoal) {
+		const percentageComplete =
+			(goal.daysOfGoal.filter((day) => day === true).length / goal.daysOfGoal.length) * 100;
 		return (
 			<div className="goalCard">
 				<h1>{goal.title}</h1>
 
 				<div>
-					<div className="pie animate">
+					<div className="pie animate" style={{ "--percentage": percentageComplete } as React.CSSProperties}>
 						{" "}
-						{`${(goal.daysOfGoal.filter((day) => day === true).length / goal.daysOfGoal.length) * 100}%`}
+						{`${percentageComplete}%`}
 					</div>
 				</div>
 			</div>
@@ -62,14 +64,14 @@ export default function Goals({ userId }: { userId: string }): ReactElement {
 			title: "Goal Number 3",
 			startDate: new Date("2023-01-04"),
 			endDate: new Date("2023-01-09"),
-			daysOfGoal: [true, true, true, true, false],
+			daysOfGoal: [true, true, true, true, true],
 		},
 		{
 			id: 4,
 			title: "This is a really long goal name",
 			startDate: new Date("2023-01-04"),
 			endDate: new Date("2023-01-09"),
-			daysOfGoal: [true, true, true, true, false],
+			daysOfGoal: [false, false, false, false, false, true, false, false, false, false],
 		},
 	];
 

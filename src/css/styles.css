@@ -1,8 +1,8 @@
-/* Setting colours for light and dark modes */
-/* Style colours and themes taken from UQ COMP2140 Matt Luscombe */
+/* Setting colours for light and dark modes 
+Style colours and themes taken from UQ COMP2140 Matt Luscombe */
 :root {
-	--purpleColorLighter: #a42de8;
-	--purpleColorPale: #e1aeff;
+	--percentageurpleColorLighter: #a42de8;
+	--percentageurpleColorPale: #e1aeff;
 	--blueColorLighter: #318aff;
 	--blueColorDarker: #2d3de8;
 
@@ -10,7 +10,7 @@
 	--fgColor: #800080;
 	--fgColorLighter: rgba(128, 0, 128, 0.5);
 	--headerTextColor: var(--fgColor);
-	--headerBackgroundColor: var(--purpleColorPale);
+	--headerBackgroundColor: var(--percentageurpleColorPale);
 	--textOnTheme: #000;
 	--textOffTheme: #ffffff;
 }
@@ -20,7 +20,7 @@
 		--bgColor: #422142;
 		--fgColor: #f0c4f0;
 		--fgColorLighter: rgba(210, 169, 210, 0.5);
-		--headerBackgroundColor: var(--purpleColorLighter);
+		--headerBackgroundColor: var(--percentageurpleColorLighter);
 		--headerTextColor: var(--fgColor);
 		--textOnTheme: #ffffff;
 		--textOffTheme: #000;
@@ -30,6 +30,7 @@
 /* General Settings */
 body {
 	background-color: var(--bgColor);
+	color: var(--textOnTheme);
 }
 
 header {
@@ -65,6 +66,7 @@ div div {
 }
 
 .goalCard {
+	flex-basis: 100%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -72,7 +74,6 @@ div div {
 	padding: 1rem;
 	background-color: var(--bgColor);
 	margin: 1rem;
-	width: 90%;
 	overflow: hidden;
 }
 
@@ -93,17 +94,17 @@ div div {
 	margin: 1rem;
 	padding: 1rem;
 	background-color: gray;
-	width: 72%;
+	width: 90%;
 }
 
 /* Pie code from https://www.freecodecamp.org/news/css-only-pie-chart/ */
-@property --p {
+@property --percentage {
 	syntax: "<number>";
 	inherits: true;
 	initial-value: 0;
 }
 .pie {
-	--p: 90;
+	--percentage: 90;
 	--b: 22px;
 	--c: var(--blueColorLighter);
 	--w: 150px;
@@ -128,14 +129,14 @@ div div {
 .pie:before {
 	inset: 0;
 	background: radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b) var(--b) no-repeat,
-		conic-gradient(var(--c) calc(var(--p) * 1%), #0000 0);
+		conic-gradient(var(--c) calc(var(--percentage) * 1%), #0000 0);
 	-webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
 	mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
 }
 .pie:after {
 	inset: calc(50% - var(--b) / 2);
 	background: var(--c);
-	transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
+	transform: rotate(calc(var(--percentage) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
 }
 .animate {
 	animation: p 1s 0.5s both;
@@ -148,6 +149,6 @@ div div {
 }
 @keyframes p {
 	from {
-		--p: 0;
+		--percentage: 0;
 	}
 }
