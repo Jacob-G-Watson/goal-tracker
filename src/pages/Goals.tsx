@@ -1,5 +1,5 @@
 //library and framework imports
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // type imports
 import type { ReactElement } from "react";
@@ -10,6 +10,18 @@ import type { ReactElement } from "react";
  * @returns
  */
 export default function Goals({ userId }: { userId: string }): ReactElement {
+	function AddNewGoal() {
+		//open a prompt for new goal information
+
+		//get the information for the new goal
+		//set the state
+		//update the api
+		//check the api, if it contains more information then use the api call else use local
+		//	Maybe a function for checking which one is more up to date??
+
+		return <div className="addNewGoal">Add a new goal</div>;
+	}
+
 	function GoalCard(goal: IGoal) {
 		const percentageComplete =
 			(goal.daysOfGoal.filter((day) => day === true).length / goal.daysOfGoal.length) * 100;
@@ -44,7 +56,7 @@ export default function Goals({ userId }: { userId: string }): ReactElement {
 		endDate: Date;
 		daysOfGoal: boolean[]; //length of daysOfGoal is equal to the difference between the start and end date
 	}
-	const listOfGoals: IGoal[] = [
+	const initialGoals: IGoal[] = [
 		{
 			id: 1,
 			title: "The first goal",
@@ -75,14 +87,24 @@ export default function Goals({ userId }: { userId: string }): ReactElement {
 		},
 	];
 
+	const [goals, setGoals] = useState(initialGoals);
+
+	/*React hook used to update goals to an api version rather than local state*/
+	useEffect(() => {
+		/*todo
+		const newGoals = apiCallHere();
+		setGoals(newGoals)
+		*/
+	}, []);
+
 	return (
 		<div className="goals">
 			<div className="listOfGoals">
-				{listOfGoals.sort(sortGoals).map((goal: IGoal) => (
+				{goals.sort(sortGoals).map((goal: IGoal) => (
 					<GoalCard key={goal.id} {...goal} />
 				))}
 			</div>
-			<div className="addNewGoal">Add a new goal</div>
+			<AddNewGoal />
 		</div>
 	);
 }
